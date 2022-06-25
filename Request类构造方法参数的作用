@@ -1,0 +1,21 @@
+（1） url：用于发送请求的url，必选参数，其他都是可选参数
+（2） data：要提交的数据（账号密码等信息），该参数类型必须是bytes形式。如果要传输的数据类型是字典，需要用url.parse.urlencode函数进行编码
+#定义表单数据
+dict = {
+    'name':'27ihim',
+    'age':'wjhxoi'
+}
+#将表单数据转换为bytes形式
+data=bytes(parse.urlencode(dict),encoding='utf-8')
+（3） headers：是一个字典类型的数据，我们在构造请求时可以通过headers命名参数直接构造，也可以通过Request对象的add_header方法后期添加
+headers={
+    'user-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36 Edg/103.0.1264.37',
+    'host':'www.bilibili.com',
+    'who':'python'
+}
+（4） origin_req_host：请求方的host名称或IP地址
+（5） unverifiable:表示这个请求是否时无法验证的，默认是False，意思技术说用户没有足够的权限来选择接收这个请求的结果。例如，请求一个HTML文档中的图像，但是没有自动抓取图像的权限，
+这时unverifiable的值技术Ture
+（6） method：用来指定请求的方法，如GET.POST.PUT等
+注：如果指定了data参数，urlopen函数就会发送POST请求，所以通常不需要指定method参数，不过让程序更容易理解，也可以指定method参数。但当设置了data参数，而将method参数设置为GET，
+那么data指定的表单数据并部提交给服务端
