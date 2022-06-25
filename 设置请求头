@@ -1,0 +1,22 @@
+'''2.某些服务器有反爬技术，这是需要设置请求头'''
+from urllib import request,parse
+url='https://pintia.cn/home'
+#定义http请求头，其中who是自定义的请求字段
+headers={
+    'user-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.53 Safari/537.36 Edg/103.0.1264.37',
+    'host':'www.bilibili.com',
+    'who':'python'
+}
+#定义表单数据
+dict = {
+    'name':'2753014726@qq.com',
+    'age':'wl0000ii'
+}
+#将表单数据转换为bytes形式
+data=bytes(parse.urlencode(dict),encoding='utf-8')
+#创建Request对象，通过Request类的构造方法指定了表单数据和HTTP请求头
+req=request.Request(url=url,data=data,headers=headers)
+#urlopen函数通过Request对象向服务端发送HTTP POST请求
+response=request.urlopen(req)
+#输出返回结果
+print(response.read().decode('utf-8'))
