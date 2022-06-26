@@ -1,0 +1,7 @@
+from urllib import parse
+result=urllib.parse.urlparse('https://search.id.com/Searchprint;hello?keyword=python 从菜鸟到高手&enc=utf-8#comment')
+print(type(result),'\n',result)
+
+运行结果：
+<class 'urllib.parse.ParseResult'> 
+ ParseResult(scheme='https', netloc='search.id.com', path='/Searchprint', params='hello', query='keyword=python 从菜鸟到高手&enc=utf-8', fragment='comment')
